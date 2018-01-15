@@ -35,9 +35,12 @@ export default {
 
     // And Google Tag Manager too
     if (typeof window.dataLayer !== 'undefined') {
+      const currentUser = container.lookup('current-user:main');
+
       appEvents.on('page:changed', data => {
         window.dataLayer.push({
           'event': 'virtualPageView',
+          'authenticated': currentUser !== undefined,
           'page': {
             'title': data.title,
             'url': data.url
