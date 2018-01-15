@@ -40,7 +40,7 @@ export default {
       appEvents.on('page:changed', data => {
         window.dataLayer.push({
           'event': 'virtualPageView',
-          'authenticated': currentUser !== undefined,
+          'authenticated': (currentUser !== undefined) ? 1 : 0,
           'page': {
             'title': data.title,
             'url': data.url
